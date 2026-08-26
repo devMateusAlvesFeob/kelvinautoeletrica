@@ -1,0 +1,2937 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Elétrica & Auto Peças do Kelvin — Alterosa MG</title>
+    <meta
+      name="description"
+      content="Especializados em Elétrica Automotiva há 6 anos em Alterosa. Baterias, diagnóstico eletrônico, alternadores e peças originais. SOS Bateria Delivery."
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="assets/favicon-192.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/apple-touch-icon.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0b;
+        --bg-alt: #131311;
+        --bg-card: #17170f;
+        --gold: #d4af37;
+        --gold-light: #f2cb5c;
+        --amber: #ff9e1b;
+        --text: #f4f1ea;
+        --muted: #9c9890;
+        --line: rgba(212, 175, 55, 0.16);
+        --line-strong: rgba(212, 175, 55, 0.35);
+        --font-display: "Rajdhani", sans-serif;
+        --font-body: "Inter", sans-serif;
+        --radius: 2px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        line-height: 1.6;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      body.locked {
+        overflow: hidden;
+        height: 100vh;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      ul {
+        list-style: none;
+      }
+      .container {
+        width: min(1200px, 92%);
+        margin-inline: auto;
+      }
+      .eyebrow {
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 22px;
+        height: 1px;
+        background: var(--gold);
+        display: inline-block;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+      h2.section-title {
+        font-size: clamp(1.9rem, 4vw, 2.9rem);
+        text-transform: uppercase;
+        margin: 0.5rem 0 1rem;
+        line-height: 1.05;
+        position: relative;
+        display: inline-block;
+      }
+      h2.section-title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        height: 3px;
+        width: 0;
+        background: linear-gradient(90deg, var(--gold), var(--amber));
+        transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.in h2.section-title::after {
+        width: 72px;
+      }
+      .section-lead {
+        color: var(--muted);
+        max-width: 560px;
+        font-size: 1.02rem;
+      }
+      section {
+        position: relative;
+      }
+      .pad {
+        padding: 9rem 0;
+      }
+      .icon-line {
+        width: 60%;
+        height: 60%;
+        fill: none;
+        stroke: var(--gold-light);
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* ===== PRELOADER ===== */
+      #preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 5000;
+        background: #0a0a0b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.2rem;
+        transition:
+          opacity 0.7s ease,
+          visibility 0.7s ease;
+      }
+      #preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      #preloader svg {
+        width: 90px;
+        height: 90px;
+        animation: preloaderSpin 2.2s ease-in-out infinite;
+      }
+      #preloader .pl-ring {
+        stroke-dasharray: 180;
+        stroke-dashoffset: 180;
+        animation: dash 1.6s ease-in-out infinite;
+      }
+      @keyframes dash {
+        0% {
+          stroke-dashoffset: 180;
+        }
+        50% {
+          stroke-dashoffset: 0;
+        }
+        100% {
+          stroke-dashoffset: -180;
+        }
+      }
+      @keyframes preloaderSpin {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      #preloader .pl-label {
+        font-family: var(--font-display);
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+
+      /* ===== SCROLL PROGRESS ===== */
+      #scrollProgress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2px;
+        width: 0%;
+        background: linear-gradient(90deg, var(--gold), var(--amber));
+        z-index: 2000;
+        transition: width 0.1s linear;
+      }
+
+      /* ===== NAV ===== */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 1rem 0;
+        transition:
+          background 0.35s ease,
+          padding 0.35s ease,
+          border-color 0.35s ease;
+        border-bottom: 1px solid transparent;
+      }
+      header.scrolled {
+        background: rgba(10, 10, 11, 0.92);
+        backdrop-filter: blur(10px);
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .brand img {
+        height: 56px;
+        width: auto;
+        transition:
+          height 0.35s ease,
+          filter 0.35s ease;
+        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.18));
+      }
+      header.scrolled .brand img {
+        height: 44px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.1rem;
+        align-items: center;
+      }
+      .nav-links a {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--text);
+        position: relative;
+        padding-bottom: 4px;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.3s ease;
+      }
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        width: 100%;
+      }
+      .nav-links a.active {
+        color: var(--gold-light);
+      }
+      .nav-cta {
+        background: var(--gold);
+        color: #0a0a0b;
+        padding: 0.65rem 1.3rem;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 0.82rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.25s ease;
+      }
+      .nav-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+          120deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.55) 50%,
+          transparent 70%
+        );
+        transform: translateX(-120%);
+        transition: transform 0.6s ease;
+      }
+      .nav-cta:hover::before {
+        transform: translateX(120%);
+      }
+      .nav-cta:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(212, 175, 55, 0.25);
+      }
+      .nav-cta svg {
+        width: 15px;
+        height: 15px;
+        fill: currentColor;
+        stroke: none;
+      }
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+      }
+      .menu-toggle span {
+        width: 24px;
+        height: 2px;
+        background: var(--text);
+        transition: 0.3s;
+        transform-origin: center;
+      }
+      .menu-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 6rem;
+        background:
+          radial-gradient(
+            ellipse 60% 55% at 78% 18%,
+            rgba(212, 175, 55, 0.1),
+            transparent 60%
+          ),
+          linear-gradient(180deg, #0a0a0b 0%, #0d0d0a 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg-parallax {
+        position: absolute;
+        inset: -8% -4% -20% -4%;
+        will-change: transform;
+      }
+      .hero-bg-photo {
+        position: absolute;
+        inset: 0;
+        background-image: url("assets/back-fundo.png");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.4;
+        animation: kenburns 22s ease-in-out infinite alternate;
+        filter: saturate(1.05) contrast(1.05);
+      }
+      @keyframes kenburns {
+        0% {
+          transform: scale(1) translate(0, 0);
+        }
+        100% {
+          transform: scale(1.12) translate(-1%, -1%);
+        }
+      }
+      .hero-bg-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(10, 10, 11, 0.55) 0%,
+            rgba(10, 10, 11, 0.78) 55%,
+            #0a0a0b 100%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(10, 10, 11, 0.65) 0%,
+            rgba(10, 10, 11, 0.15) 45%,
+            rgba(10, 10, 11, 0.55) 100%
+          );
+      }
+      .hero-bg-mark {
+        position: absolute;
+        right: 2%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: min(46vw, 620px);
+        opacity: 0.06;
+        pointer-events: none;
+        transition: transform 0.4s ease-out;
+      }
+      .particles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--gold);
+        opacity: 0.35;
+        filter: blur(0.5px);
+        animation: drift linear infinite;
+      }
+      @keyframes drift {
+        0% {
+          transform: translateY(0) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.5;
+        }
+        90% {
+          opacity: 0.35;
+        }
+        100% {
+          transform: translateY(-90vh) translateX(20px);
+          opacity: 0;
+        }
+      }
+      .hero-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        max-width: 760px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-tag {
+        margin-bottom: 1.7rem;
+      }
+      .hero h1 {
+        font-size: clamp(2.3rem, 5.6vw, 4.1rem);
+        line-height: 1.03;
+        text-transform: uppercase;
+        margin-bottom: 1.1rem;
+      }
+      .hero h1 .amp {
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .hero h1 .accent {
+        color: var(--gold);
+        position: relative;
+      }
+      .hero-subtitle {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: clamp(1.1rem, 2.3vw, 1.5rem);
+        color: var(--gold-light);
+        letter-spacing: 0.01em;
+        margin-bottom: 1.6rem;
+      }
+      .hero-desc {
+        color: var(--muted);
+        font-size: 1.1rem;
+        max-width: 560px;
+        margin: 0 0 2.6rem;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 3.6rem;
+        justify-content: flex-start;
+      }
+      .btn {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 1rem 1.9rem;
+        border-radius: var(--radius);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.25s ease,
+          color 0.25s ease;
+        cursor: pointer;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+          120deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.45) 50%,
+          transparent 70%
+        );
+        transform: translateX(-120%);
+        transition: transform 0.65s ease;
+      }
+      .btn:hover::before {
+        transform: translateX(120%);
+      }
+      .btn-primary {
+        background: var(--amber);
+        color: #fff;
+        animation: ctaPulse 2.6s ease-in-out infinite;
+      }
+      @keyframes ctaPulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 158, 27, 0.4);
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(255, 158, 27, 0);
+          transform: translateY(-2px) scale(1.015);
+        }
+      }
+      .btn-primary:hover {
+        animation-play-state: paused;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(255, 158, 27, 0.35);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--line-strong);
+      }
+      .btn-ghost:hover {
+        border-color: var(--gold);
+        background: rgba(212, 175, 55, 0.06);
+        transform: translateY(-3px);
+      }
+      .hero-stats {
+        display: flex;
+        gap: 3.2rem;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      .stat-num {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 2.1rem;
+        color: var(--gold-light);
+        line-height: 1;
+      }
+      .stat-label {
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        margin-top: 0.35rem;
+        max-width: 150px;
+      }
+
+      /* entrance animation (hero, above the fold) */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero-copy .hero-tag {
+        animation: fadeUp 0.8s ease 0.15s both;
+      }
+      .hero-copy h1 {
+        animation: fadeUp 0.8s ease 0.3s both;
+      }
+      .hero-copy .hero-subtitle {
+        animation: fadeUp 0.8s ease 0.4s both;
+      }
+      .hero-copy .hero-desc {
+        animation: fadeUp 0.8s ease 0.5s both;
+      }
+      .hero-copy .hero-actions {
+        animation: fadeUp 0.8s ease 0.65s both;
+      }
+      .hero-copy .hero-stats {
+        animation: fadeUp 0.8s ease 0.8s both;
+      }
+
+      /* ===== FEATURE BAR ===== */
+      .feature-bar {
+        background: var(--bg-alt);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 6.5rem 0;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+      .feature-item {
+        padding: 0 2rem;
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        border-left: 1px solid var(--line);
+      }
+      .feature-item:first-child {
+        border-left: none;
+        padding-left: 0;
+      }
+      .feature-icon {
+        width: 46px;
+        height: 46px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid var(--line-strong);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          transform 0.4s ease,
+          background 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+      .feature-item:hover .feature-icon {
+        transform: rotate(-8deg) scale(1.08);
+        background: rgba(212, 175, 55, 0.16);
+        box-shadow: 0 0 22px rgba(212, 175, 55, 0.25);
+      }
+      .feature-item h4 {
+        font-size: 1.05rem;
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+      }
+      .feature-item p {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      /* ===== SOBRE (About) ===== */
+      .about {
+        background: var(--bg);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .about-media {
+        position: relative;
+      }
+      .about-media .frame {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--line-strong);
+      }
+      .about-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(1.02) contrast(1.03);
+        transition: transform 0.7s ease;
+      }
+      .about-media .frame:hover img {
+        transform: scale(1.05);
+      }
+      .about-media .frame-tag {
+        position: absolute;
+        top: 1.2rem;
+        left: 1.2rem;
+        background: rgba(10, 10, 11, 0.75);
+        backdrop-filter: blur(6px);
+        border: 1px solid var(--line-strong);
+        padding: 0.5rem 0.9rem;
+        font-family: var(--font-display);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+      }
+      .about-media .badge-years {
+        position: absolute;
+        bottom: -1.3rem;
+        right: -1rem;
+        background: var(--gold);
+        color: #0a0a0b;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        text-align: center;
+        line-height: 1;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        animation: pulseBadge 3s ease-in-out infinite;
+      }
+      @keyframes pulseBadge {
+        0%,
+        100% {
+          box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.5),
+            0 0 0 0 rgba(212, 175, 55, 0.4);
+        }
+        50% {
+          box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.5),
+            0 0 0 14px rgba(212, 175, 55, 0);
+        }
+      }
+      .about-media .badge-years .n {
+        font-size: 2.4rem;
+        font-weight: 700;
+      }
+      .about-media .badge-years .l {
+        font-size: 0.62rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-top: 0.2rem;
+      }
+      .about-copy p {
+        color: var(--muted);
+        margin-bottom: 1.1rem;
+        font-size: 1.02rem;
+      }
+      .about-copy p strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .signature-list {
+        margin-top: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .signature-list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+        color: var(--text);
+        font-size: 0.96rem;
+        transition: transform 0.3s ease;
+      }
+      .signature-list li:hover {
+        transform: translateX(6px);
+      }
+      .signature-list .bolt-bullet {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        margin-top: 0.2rem;
+        color: var(--gold);
+      }
+
+      /* ===== SOS BANNER ===== */
+      .sos {
+        background: linear-gradient(120deg, #1a1206, #0a0a0b 60%);
+        border-top: 1px solid var(--line-strong);
+        border-bottom: 1px solid var(--line-strong);
+        padding: 4.2rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .sos::after {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        background: repeating-linear-gradient(
+          115deg,
+          rgba(255, 158, 27, 0.06) 0 2px,
+          transparent 2px 40px
+        );
+        pointer-events: none;
+        animation: stripes 7s linear infinite;
+      }
+      @keyframes stripes {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(60px, 40px);
+        }
+      }
+      .sos-grid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+      }
+      .sos-text h3 {
+        font-size: clamp(1.4rem, 3vw, 1.9rem);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+      .sos-text p {
+        color: var(--muted);
+        max-width: 480px;
+      }
+      .pulse-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--amber);
+        margin-right: 0.5rem;
+        position: relative;
+        top: -1px;
+        box-shadow: 0 0 0 0 rgba(255, 158, 27, 0.6);
+        animation: pulse 1.6s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 158, 27, 0.55);
+        }
+        70% {
+          box-shadow: 0 0 0 14px rgba(255, 158, 27, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 158, 27, 0);
+        }
+      }
+
+      /* ===== CARDS (products / specialties) ===== */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.6rem;
+        margin-top: 3rem;
+      }
+      .card {
+        background: var(--bg-card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 2.2rem 1.9rem;
+        transition:
+          transform 0.25s ease,
+          border-color 0.35s ease,
+          background 0.35s ease,
+          box-shadow 0.35s ease;
+        position: relative;
+        overflow: hidden;
+        will-change: transform;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--gold), transparent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .card:hover {
+        border-color: var(--line-strong);
+        background: #1b1b12;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+      }
+      .card:hover::before {
+        transform: scaleX(1);
+      }
+      .card-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid var(--line-strong);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.3rem;
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+      .card:hover .card-icon {
+        transform: rotate(-10deg) scale(1.1);
+        box-shadow: 0 0 24px rgba(212, 175, 55, 0.28);
+      }
+      .card h4 {
+        font-size: 1.15rem;
+        text-transform: uppercase;
+        margin-bottom: 0.6rem;
+        letter-spacing: 0.01em;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      /* ===== INFRA GALLERY ===== */
+      .infra-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.2rem;
+        margin-top: 3rem;
+      }
+      .infra-tile {
+        aspect-ratio: 3/4;
+        border-radius: var(--radius);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.3rem;
+        background: linear-gradient(155deg, #17170f 0%, #0a0a0b 100%);
+        transition:
+          border-color 0.35s ease,
+          transform 0.35s ease,
+          box-shadow 0.35s ease;
+        will-change: transform;
+      }
+      .infra-tile .tile-photo {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.7s ease,
+          filter 0.5s ease;
+        filter: grayscale(0.25) contrast(1.05);
+      }
+      .infra-tile:hover .tile-photo {
+        transform: scale(1.09);
+        filter: grayscale(0) contrast(1.1);
+      }
+      .infra-tile::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 22px 22px;
+        opacity: 0.4;
+        mix-blend-mode: overlay;
+      }
+      .infra-tile .tile-shade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(10, 10, 11, 0.15) 0%,
+          rgba(10, 10, 11, 0.55) 55%,
+          rgba(10, 10, 11, 0.92) 100%
+        );
+        transition: background 0.4s ease;
+      }
+      .infra-tile:hover .tile-shade {
+        background: linear-gradient(
+          180deg,
+          rgba(10, 10, 11, 0.35) 0%,
+          rgba(10, 10, 11, 0.7) 45%,
+          rgba(10, 10, 11, 0.96) 100%
+        );
+      }
+      .infra-tile::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(212, 175, 55, 0.16),
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      .infra-tile .icon-wrap {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        position: relative;
+        z-index: 2;
+        background: rgba(10, 10, 11, 0.55);
+        backdrop-filter: blur(4px);
+        border: 1px solid var(--line-strong);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.9rem;
+        transition:
+          transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s ease;
+      }
+      .infra-tile span {
+        position: relative;
+        z-index: 2;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 0.98rem;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+      .infra-tile .tile-caption {
+        position: relative;
+        z-index: 2;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.4;
+        max-height: 0;
+        opacity: 0;
+        margin-top: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.45s ease,
+          opacity 0.35s ease,
+          margin-top 0.45s ease;
+      }
+      .infra-tile:hover .tile-caption {
+        max-height: 90px;
+        opacity: 1;
+        margin-top: 0.5rem;
+      }
+      .infra-tile:hover {
+        transform: translateY(-8px);
+        border-color: var(--gold);
+        box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45);
+      }
+      .infra-tile:hover::after {
+        opacity: 1;
+      }
+      .infra-tile:hover .icon-wrap {
+        transform: rotate(8deg) scale(1.12);
+        box-shadow: 0 0 26px rgba(212, 175, 55, 0.3);
+      }
+
+      /* ===== TESTIMONIALS (Google Reviews) ===== */
+      .testimonials {
+        background: var(--bg-alt);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .t-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .t-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .t-rating .score {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 2rem;
+        color: var(--gold-light);
+        line-height: 1;
+      }
+      .t-rating .stars {
+        color: var(--gold);
+        font-size: 1rem;
+        letter-spacing: 0.1em;
+      }
+      .t-rating .count {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+      .t-carousel-wrap {
+        position: relative;
+        margin-top: 3rem;
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent 0,
+          #000 6%,
+          #000 94%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          90deg,
+          transparent 0,
+          #000 6%,
+          #000 94%,
+          transparent 100%
+        );
+      }
+      .t-carousel {
+        display: flex;
+        gap: 1.4rem;
+        width: max-content;
+        animation: tScroll 46s linear infinite;
+      }
+      .t-carousel:hover {
+        animation-play-state: paused;
+      }
+      .t-track {
+        display: flex;
+        gap: 1.4rem;
+        padding-right: 1.4rem;
+      }
+      @keyframes tScroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .t-card {
+        flex: 0 0 320px;
+        background: var(--bg);
+        border: 1px solid var(--line);
+        padding: 1.7rem 1.6rem;
+        border-radius: var(--radius);
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+      .t-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--line-strong);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      }
+      .t-card-top {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+      .t-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1rem;
+        color: #0a0a0b;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      }
+      .t-who {
+        flex: 1;
+        min-width: 0;
+      }
+      .t-name {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .t-meta {
+        color: var(--muted);
+        font-size: 0.74rem;
+        margin-top: 0.1rem;
+      }
+      .t-time {
+        color: var(--muted);
+        font-size: 0.72rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .t-stars-row {
+        color: var(--gold);
+        letter-spacing: 0.12em;
+        font-size: 0.85rem;
+      }
+      .t-card p.t-text {
+        color: var(--text);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+      .t-reaction {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        width: fit-content;
+      }
+      .t-reply {
+        margin-top: 0.2rem;
+        padding: 0.8rem 0.9rem;
+        background: var(--bg-alt);
+        border-left: 2px solid var(--gold);
+        border-radius: 0 var(--radius) var(--radius) 0;
+      }
+      .t-reply-head {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-bottom: 0.3rem;
+      }
+      .t-reply-head svg {
+        width: 13px;
+        height: 13px;
+        color: var(--gold);
+      }
+      .t-reply-head span {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: var(--gold-light);
+      }
+      .t-reply p {
+        color: var(--muted);
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+
+      /* ===== BRANDS (marquee) ===== */
+      .brands {
+        padding: 4.5rem 0;
+        overflow: hidden;
+      }
+      .brands .eyebrow,
+      .brands .marquee-title {
+        width: min(1200px, 92%);
+        margin-inline: auto;
+        margin-bottom: 2.2rem;
+      }
+      .marquee-viewport {
+        position: relative;
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent 0,
+          #000 8%,
+          #000 92%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          90deg,
+          transparent 0,
+          #000 8%,
+          #000 92%,
+          transparent 100%
+        );
+      }
+      .marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 26s linear infinite;
+        padding: 0 3rem;
+      }
+      .marquee:hover {
+        animation-play-state: paused;
+      }
+      .marquee-track {
+        display: flex;
+        align-items: center;
+        gap: 5.5rem;
+        padding-right: 5.5rem;
+      }
+      .marquee span {
+        font-family: var(--font-display);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        opacity: 0.65;
+        transition:
+          color 0.3s ease,
+          opacity 0.3s ease;
+        white-space: nowrap;
+      }
+      .marquee span:hover {
+        color: var(--gold-light);
+        opacity: 1;
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ===== LOCATION ===== */
+      .location {
+        background: var(--bg-alt);
+        border-top: 1px solid var(--line);
+      }
+      .loc-grid {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 3rem;
+        align-items: stretch;
+        margin-top: 3rem;
+      }
+      .loc-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        justify-content: center;
+      }
+      .loc-item {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        transition: transform 0.3s ease;
+      }
+      .loc-item:hover {
+        transform: translateX(6px);
+      }
+      .loc-item .ic {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid var(--line-strong);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .loc-item h5 {
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        letter-spacing: 0.03em;
+        margin-bottom: 0.2rem;
+      }
+      .loc-item p,
+      .loc-item a {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+      .map-frame {
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--line-strong);
+        min-height: 340px;
+      }
+      .map-frame iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 340px;
+        border: 0;
+        filter: grayscale(0.3) contrast(1.1);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: #08080a;
+        border-top: 1px solid var(--line);
+        padding: 5.5rem 0 2rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1.2fr;
+        gap: 3rem;
+        padding-bottom: 3rem;
+      }
+      .footer-brand .brand {
+        margin-bottom: 1.2rem;
+      }
+      .footer-brand img {
+        height: 78px;
+        width: auto;
+      }
+      .footer-brand p {
+        color: var(--muted);
+        font-size: 0.92rem;
+        max-width: 340px;
+      }
+      footer h5 {
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        color: var(--gold-light);
+        margin-bottom: 1.2rem;
+      }
+      footer ul li {
+        margin-bottom: 0.75rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      footer ul li a:hover {
+        color: var(--gold-light);
+      }
+      .footer-bottom {
+        border-top: 1px solid var(--line);
+        padding-top: 1.6rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      /* ===== WHATSAPP FLOAT ===== */
+      .wa-float {
+        position: fixed;
+        bottom: 1.6rem;
+        right: 1.6rem;
+        z-index: 900;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--amber);
+        color: #1a0f00;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(255, 158, 27, 0.35);
+        animation: float2 3s ease-in-out infinite;
+        transition: transform 0.25s ease;
+      }
+      .wa-float svg {
+        width: 28px;
+        height: 28px;
+        fill: none;
+        stroke: #1a0f00;
+        stroke-width: 1.8;
+      }
+      .wa-float::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 2px solid var(--amber);
+        opacity: 0.6;
+        animation: ring 2s ease-out infinite;
+      }
+      @keyframes ring {
+        0% {
+          transform: scale(1);
+          opacity: 0.6;
+        }
+        100% {
+          transform: scale(1.7);
+          opacity: 0;
+        }
+      }
+      .wa-float:hover {
+        transform: scale(1.08);
+      }
+      @keyframes float2 {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      /* ===== SCROLL REVEAL ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transition-delay: var(--d, 0s);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 1100px) {
+        .hero-grid {
+          max-width: 640px;
+        }
+      }
+      @media (max-width: 980px) {
+        .feature-grid {
+          grid-template-columns: 1fr;
+          gap: 1.6rem;
+        }
+        .feature-item {
+          border-left: none;
+          padding-left: 0;
+          border-top: 1px solid var(--line);
+          padding-top: 1.6rem;
+        }
+        .feature-item:first-child {
+          border-top: none;
+          padding-top: 0;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        .card-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .infra-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .loc-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero-bg-mark {
+          width: min(52vw, 460px);
+          opacity: 0.05;
+        }
+      }
+      @media (max-width: 900px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100vh;
+          width: 72%;
+          max-width: 320px;
+          background: #0a0a0b;
+          border-left: 1px solid var(--line);
+          flex-direction: column;
+          justify-content: center;
+          gap: 2rem;
+          transform: translateX(100%);
+          transition: transform 0.4s ease;
+        }
+        .nav-links.open {
+          transform: translateX(0);
+        }
+        .nav-cta {
+          display: none;
+        }
+        .menu-toggle {
+          display: flex;
+        }
+      }
+      @media (max-width: 760px) {
+        .hero {
+          min-height: auto;
+          padding-top: 8rem;
+          padding-bottom: 5rem;
+        }
+        .hero-grid {
+          max-width: 100%;
+        }
+        .hero h1 {
+          font-size: clamp(2.1rem, 8vw, 2.9rem);
+        }
+        .hero-subtitle {
+          font-size: clamp(1rem, 4vw, 1.2rem);
+        }
+        .hero-desc {
+          max-width: 100%;
+        }
+        .hero-stats {
+          gap: 1.8rem;
+        }
+        .hero-bg-mark {
+          width: min(70vw, 380px);
+          opacity: 0.045;
+          right: -6%;
+        }
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+        .infra-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2.2rem;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+        .pad {
+          padding: 6rem 0;
+        }
+        .brand img {
+          height: 46px;
+        }
+        .t-card {
+          flex-basis: 82vw;
+        }
+        .t-head {
+          align-items: flex-start;
+        }
+        .infra-tile {
+          aspect-ratio: 1/1.15;
+        }
+        .infra-tile .tile-caption {
+          font-size: 0.76rem;
+        }
+      }
+      @media (max-width: 600px) {
+        .about-media .badge-years {
+          width: 96px;
+          height: 96px;
+          bottom: -1rem;
+          right: -0.6rem;
+        }
+        .about-media .badge-years .n {
+          font-size: 1.9rem;
+        }
+        .loc-item {
+          align-items: center;
+        }
+      }
+      @media (max-width: 480px) {
+        .infra-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero-actions {
+          width: 100%;
+        }
+        .hero-actions .btn {
+          flex: 1 1 100%;
+          justify-content: center;
+        }
+        .hero-stats {
+          gap: 1.4rem 2rem;
+        }
+        .stat-num {
+          font-size: 1.7rem;
+        }
+        .stat-label {
+          font-size: 0.72rem;
+          max-width: 120px;
+        }
+      }
+      @media (max-width: 380px) {
+        .hero {
+          padding-top: 7rem;
+        }
+        .hero h1 {
+          font-size: 1.85rem;
+        }
+        .container {
+          width: 94%;
+        }
+      }
+    </style>
+  </head>
+  <body class="locked">
+    <!-- ============ PRELOADER ============ -->
+    <div id="preloader">
+      <svg viewBox="0 0 64 64" fill="none">
+        <circle
+          class="pl-ring"
+          cx="32"
+          cy="32"
+          r="27"
+          stroke="#d4af37"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path d="M35 18 L24 36 H31 L28 50 L42 30 H35 Z" fill="#d4af37" />
+      </svg>
+      <span class="pl-label">Carregando</span>
+    </div>
+    <div id="scrollProgress"></div>
+
+    <!-- ============ NAV ============ -->
+    <header id="siteHeader">
+      <div class="container">
+        <nav>
+          <a href="#top" class="brand">
+            <img
+              src="assets/logo-completa.png"
+              alt="Auto Elétrica & Auto Peças do Kelvin"
+            />
+          </a>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#sobre" data-nav>Nossa História</a></li>
+            <li><a href="#produtos" data-nav>Produtos</a></li>
+            <li><a href="#servicos" data-nav>Serviços</a></li>
+            <li><a href="#local" data-nav>Localização</a></li>
+          </ul>
+          <a href="https://wa.me/5535997084353" target="_blank" class="nav-cta">
+            <svg viewBox="0 0 24 24">
+              <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+            </svg>
+            WhatsApp Emergência
+          </a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero-bg-parallax" id="heroBgParallax">
+        <div class="hero-bg-photo"></div>
+      </div>
+      <div class="hero-bg-overlay"></div>
+      <div class="particles" id="particles"></div>
+      <svg
+        class="hero-bg-mark"
+        id="heroBgMark"
+        viewBox="0 0 200 200"
+        fill="none"
+      >
+        <path
+          d="M100 10 L112 36 L140 30 L134 58 L160 70 L138 90 L150 118 L122 112 L108 138 L100 112 L92 138 L78 112 L50 118 L62 90 L40 70 L66 58 L60 30 L88 36 Z"
+          stroke="#d4af37"
+          stroke-width="1"
+        />
+      </svg>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow hero-tag">
+              Alterosa · MG · 6 anos de estrada
+            </div>
+            <h1>
+              Auto Elétrica <span class="amp">&amp;</span><br />Auto Peças do
+              <span class="accent">Kelvin</span>
+            </h1>
+            <p class="hero-subtitle">
+              Elétrica automotiva de precisão e confiança
+            </p>
+            <p class="hero-desc">
+              Baterias de alta durabilidade, peças originais e diagnóstico
+              elétrico de precisão. Elevamos o padrão de qualidade que o seu
+              carro exige, entregando a agilidade e a confiança que você
+              precisa.
+            </p>
+            <div class="hero-actions">
+              <a
+                href="https://wa.me/5535997084353"
+                target="_blank"
+                class="btn btn-primary"
+                ><span class="pulse-dot" style="box-shadow: none"></span>Chamar
+                Socorro Agora</a
+              >
+              <a href="#servicos" class="btn btn-ghost">Ver Serviços</a>
+            </div>
+            <div class="hero-stats">
+              <div>
+                <div class="stat-num" data-count="6">0</div>
+                <div class="stat-label">Anos de atuação em Alterosa</div>
+              </div>
+              <div>
+                <div class="stat-num" data-count="20">0</div>
+                <div class="stat-label">
+                  Minutos, tempo médio do SOS Delivery
+                </div>
+              </div>
+              <div>
+                <div class="stat-num" data-count="5">0</div>
+                <div class="stat-label">Marcas homologadas em estoque</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURE BAR ============ -->
+    <section class="feature-bar">
+      <div class="container feature-grid">
+        <div class="feature-item reveal">
+          <div class="feature-icon">
+            <svg class="icon-line" viewBox="0 0 24 24">
+              <path
+                d="M12 3 L19 6 L19 11 C19 16 16 19.5 12 21 C8 19.5 5 16 5 11 L5 6 Z"
+              />
+            </svg>
+          </div>
+          <div>
+            <h4>Garantia de Serviço</h4>
+            <p>
+              Profissionais rigorosamente qualificados e garantia estendida em
+              todas as peças e manutenções.
+            </p>
+          </div>
+        </div>
+        <div class="feature-item reveal" style="--d: 0.1s">
+          <div class="feature-icon">
+            <svg class="icon-line" viewBox="0 0 24 24">
+              <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+            </svg>
+          </div>
+          <div>
+            <h4>Atendimento Ágil</h4>
+            <p>
+              Diagnóstico preciso e rápido para você voltar a rodar com total
+              segurança e sem perder tempo.
+            </p>
+          </div>
+        </div>
+        <div class="feature-item reveal" style="--d: 0.2s">
+          <div class="feature-icon">
+            <svg class="icon-line" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3.4" />
+              <rect x="10.5" y="1" width="3" height="4" rx="1" />
+              <rect x="10.5" y="19" width="3" height="4" rx="1" />
+              <rect
+                x="10.5"
+                y="1"
+                width="3"
+                height="4"
+                rx="1"
+                transform="rotate(45 12 12)"
+              />
+              <rect
+                x="10.5"
+                y="1"
+                width="3"
+                height="4"
+                rx="1"
+                transform="rotate(90 12 12)"
+              />
+              <rect
+                x="10.5"
+                y="1"
+                width="3"
+                height="4"
+                rx="1"
+                transform="rotate(135 12 12)"
+              />
+              <rect
+                x="10.5"
+                y="1"
+                width="3"
+                height="4"
+                rx="1"
+                transform="rotate(180 12 12)"
+              />
+              <rect
+                x="10.5"
+                y="1"
+                width="3"
+                height="4"
+                rx="1"
+                transform="rotate(225 12 12)"
+              />
+              <rect
+                x="10.5"
+                y="1"
+                width="3"
+                height="4"
+                rx="1"
+                transform="rotate(270 12 12)"
+              />
+              <rect
+                x="10.5"
+                y="1"
+                width="3"
+                height="4"
+                rx="1"
+                transform="rotate(315 12 12)"
+              />
+            </svg>
+          </div>
+          <div>
+            <h4>Peças Originais</h4>
+            <p>
+              Trabalhamos exclusivamente com as marcas mais renomadas e
+              homologadas do mercado automotivo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE / NOSSA HISTÓRIA ============ -->
+    <section class="about pad" id="sobre">
+      <div class="container about-grid">
+        <div class="about-media reveal">
+          <div class="frame">
+            <img
+              src="assets/donos.png"
+              alt="Kelvin e equipe, donos da Auto Elétrica do Kelvin, em frente ao logo da oficina"
+            />
+            <div class="frame-tag">Alterosa — MG</div>
+          </div>
+          <div class="badge-years">
+            <span class="n">6+</span
+            ><span class="l">Anos de<br />Trajetória</span>
+          </div>
+        </div>
+        <div class="about-copy reveal" style="--d: 0.15s">
+          <div class="eyebrow">Nossa Trajetória</div>
+          <h2 class="section-title">
+            Uma paixão por motores que virou referência
+          </h2>
+          <p>
+            Há mais de 6 anos, a
+            <strong>Auto Elétrica e Auto Peças do Kelvin</strong> nasceu com um
+            propósito claro: elevar o nível da manutenção automotiva em Alterosa
+            e região. O que começou como uma paixão por motores e elétrica se
+            transformou em um centro de referência.
+          </p>
+          <p>
+            Nossa missão sempre foi além de apenas trocar peças. Buscamos
+            entender o problema do seu veículo de forma profunda para oferecer
+            uma solução definitiva e transparente — hoje, contamos com uma base
+            sólida de clientes que confiam suas famílias e suas frotas de
+            trabalho em nossas mãos.
+          </p>
+          <ul class="signature-list">
+            <li>
+              <svg class="bolt-bullet" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+              </svg>
+              Diagnóstico de bateria a revisões completas de injeção eletrônica.
+            </li>
+            <li>
+              <svg class="bolt-bullet" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+              </svg>
+              Compromisso com a segurança e a longevidade do seu veículo.
+            </li>
+            <li>
+              <svg class="bolt-bullet" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+              </svg>
+              Transparência total do orçamento ao reparo final.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOS BANNER ============ -->
+    <section class="sos">
+      <div class="container sos-grid">
+        <div class="sos-text reveal">
+          <div class="eyebrow" style="color: var(--amber)">
+            SOS Bateria Delivery
+          </div>
+          <h3>
+            <span class="pulse-dot"></span>Ficou sem bateria no meio do caminho?
+          </h3>
+          <p>
+            Não se preocupe! Nós levamos, testamos o alternador e instalamos a
+            bateria nova onde você estiver.
+          </p>
+        </div>
+        <a
+          href="https://wa.me/5535997084353"
+          target="_blank"
+          class="btn btn-primary reveal"
+          style="--d: 0.15s"
+          >Chamar Socorro Agora →</a
+        >
+      </div>
+    </section>
+
+    <!-- ============ PRODUTOS ============ -->
+    <section class="pad" id="produtos">
+      <div class="container">
+        <div class="eyebrow reveal">Catálogo de Produtos</div>
+        <h2 class="section-title reveal">Componentes de alta performance</h2>
+        <p class="section-lead reveal">
+          Fornecemos peças que entregam durabilidade e segurança comprovadas.
+          Seu carro merece o melhor.
+        </p>
+        <div class="card-grid">
+          <div class="card reveal">
+            <div class="card-icon">
+              <svg class="icon-line" viewBox="0 0 24 24">
+                <rect x="2" y="7" width="17" height="10" rx="2" />
+                <rect x="19" y="10" width="2" height="4" />
+                <line x1="6.5" y1="10" x2="6.5" y2="14" />
+                <line x1="10.5" y1="10" x2="10.5" y2="14" />
+              </svg>
+            </div>
+            <h4>Baterias Premium</h4>
+            <p>
+              Linha completa para veículos leves, pesados e sistemas start-stop.
+              Trabalhamos com marcas de ponta.
+            </p>
+          </div>
+          <div class="card reveal" style="--d: 0.1s">
+            <div class="card-icon">
+              <svg class="icon-line" viewBox="0 0 24 24">
+                <rect x="10" y="2" width="4" height="7" rx="1" />
+                <path d="M9 9 L9 13 L15 13 L15 9" />
+                <path d="M10 13 L11 17 L13 14 L14 18" />
+              </svg>
+            </div>
+            <h4>Injeção e Ignição</h4>
+            <p>
+              Velas de iridium, bobinas de alta tensão, cabos e módulos
+              originais para a máxima eficiência.
+            </p>
+          </div>
+          <div class="card reveal" style="--d: 0.2s">
+            <div class="card-icon">
+              <svg class="icon-line" viewBox="0 0 24 24">
+                <path
+                  d="M12 3 A6 6 0 0 0 9 14 C9.6 14.6 10 15.3 10 16 L14 16 C14 15.3 14.4 14.6 15 14 A6 6 0 0 0 12 3 Z"
+                />
+                <path d="M9 18 L15 18 M10 21 L14 21" />
+              </svg>
+            </div>
+            <h4>Sistemas de Iluminação</h4>
+            <p>
+              Visibilidade é segurança. Oferecemos lâmpadas originais, super
+              brancas e kits de LED completos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVIÇOS / ESPECIALIDADES ============ -->
+    <section
+      class="pad"
+      id="servicos"
+      style="
+        background: var(--bg-alt);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      "
+    >
+      <div class="container">
+        <div class="eyebrow reveal">Centro de Especialidades</div>
+        <h2 class="section-title reveal">Tecnologia e experiência técnica</h2>
+        <p class="section-lead reveal">
+          Equipamentos de última geração aliados à experiência técnica para
+          resolver desde problemas crônicos até manutenções preventivas.
+        </p>
+        <div class="card-grid">
+          <div class="card reveal">
+            <div class="card-icon">
+              <svg class="icon-line" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="12" rx="2" />
+                <path d="M9 20 L15 20 M12 16 L12 20" />
+                <path d="M6 10 L9 13 L11 8 L13 12 L16 9" />
+              </svg>
+            </div>
+            <h4>Diagnóstico Eletrônico</h4>
+            <p>
+              Leitura e mapeamento completo de falhas eletrônicas. Utilizamos
+              scanners atualizados.
+            </p>
+          </div>
+          <div class="card reveal" style="--d: 0.1s">
+            <div class="card-icon">
+              <svg class="icon-line" viewBox="0 0 24 24">
+                <path
+                  d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"
+                />
+              </svg>
+            </div>
+            <h4>Alternadores e Arranque</h4>
+            <p>
+              Recondicionamento e revisão completa. Troca de escovas e
+              reguladores de voltagem originais.
+            </p>
+          </div>
+          <div class="card reveal" style="--d: 0.2s">
+            <div class="card-icon">
+              <svg class="icon-line" viewBox="0 0 24 24">
+                <rect x="5" y="4" width="14" height="17" rx="2" />
+                <rect x="9" y="2" width="6" height="4" rx="1" />
+                <path d="M9 13 L11 15 L15 11" />
+              </svg>
+            </div>
+            <h4>Revisão Preventiva</h4>
+            <p>
+              Evite surpresas. Análise de chicotes, identificação de fuga de
+              corrente e checagem de sistemas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INFRAESTRUTURA ============ -->
+    <section class="pad">
+      <div class="container">
+        <div class="eyebrow reveal">Nossa Infraestrutura</div>
+        <h2 class="section-title reveal">Ambiente organizado e equipado</h2>
+        <p class="section-lead reveal">
+          Um espaço limpo e equipado com tecnologia de ponta para cuidar do seu
+          veículo do início ao fim.
+        </p>
+        <div class="infra-grid">
+          <div class="infra-tile reveal">
+            <img
+              class="tile-photo"
+              src="assets/card-1.png"
+              alt="Oficina interna da Auto Elétrica do Kelvin"
+              onerror="this.style.display = 'none'"
+            />
+            <div class="tile-shade"></div>
+            <div class="icon-wrap">
+              <svg
+                class="icon-line"
+                viewBox="0 0 24 24"
+                style="width: 55%; height: 55%"
+              >
+                <path
+                  d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"
+                />
+              </svg>
+            </div>
+            <span>Oficina Interna</span>
+            <p class="tile-caption">
+              Ambiente limpo, organizado e com elevadores para todos os portes
+              de veículo.
+            </p>
+          </div>
+          <div class="infra-tile reveal" style="--d: 0.08s">
+            <img
+              class="tile-photo"
+              src="assets/card-2.png"
+              alt="Bateria e fiação elétrica automotiva"
+              onerror="this.style.display = 'none'"
+            />
+            <div class="tile-shade"></div>
+            <div class="icon-wrap">
+              <svg
+                class="icon-line"
+                viewBox="0 0 24 24"
+                style="width: 55%; height: 55%"
+              >
+                <rect x="4" y="9" width="14" height="9" rx="1.5" />
+                <path d="M8 9 L8 5 M13 9 L13 5 M1 13 L4 13 M18 13 L21 13" />
+              </svg>
+            </div>
+            <span>Bateria e Fios</span>
+            <p class="tile-caption">
+              Testamos e higienizamos toda a fiação antes de qualquer
+              instalação.
+            </p>
+          </div>
+          <div class="infra-tile reveal" style="--d: 0.16s">
+            <img
+              class="tile-photo"
+              src="assets/card-3.png"
+              alt="Motor aberto para diagnóstico"
+              onerror="this.style.display = 'none'"
+            />
+            <div class="tile-shade"></div>
+            <div class="icon-wrap">
+              <svg
+                class="icon-line"
+                viewBox="0 0 24 24"
+                style="width: 55%; height: 55%"
+              >
+                <rect x="4" y="10" width="16" height="8" rx="1" />
+                <path
+                  d="M7 10 L7 6 L10 6 L10 10 M14 10 L14 6 L17 6 L17 10 M4 14 L20 14 M7 18 L7 20 M17 18 L17 20"
+                />
+              </svg>
+            </div>
+            <span>Motor Aberto</span>
+            <p class="tile-caption">
+              Diagnóstico visual completo antes de qualquer orçamento.
+            </p>
+          </div>
+          <div class="infra-tile reveal" style="--d: 0.24s">
+            <img
+              class="tile-photo"
+              src="assets/card-4.png"
+              alt="Atendimento ao cliente na oficina"
+              onerror="this.style.display = 'none'"
+            />
+            <div class="tile-shade"></div>
+            <div class="icon-wrap">
+              <svg
+                class="icon-line"
+                viewBox="0 0 24 24"
+                style="width: 55%; height: 55%"
+              >
+                <path d="M4 4 L20 4 L20 16 L9 16 L4 20 Z" />
+                <circle
+                  cx="9"
+                  cy="10"
+                  r="0.8"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <circle
+                  cx="12"
+                  cy="10"
+                  r="0.8"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <circle
+                  cx="15"
+                  cy="10"
+                  r="0.8"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </div>
+            <span>Atendimento ao Cliente</span>
+            <p class="tile-caption">
+              Explicamos cada etapa do serviço em linguagem simples e direta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEPOIMENTOS ============ -->
+    <section class="testimonials pad">
+      <div class="container">
+        <div class="t-head">
+          <div class="reveal">
+            <div class="eyebrow">O Que Dizem Nossos Clientes</div>
+            <h2 class="section-title">
+              Avaliações de quem já rodou com a gente
+            </h2>
+          </div>
+          <div class="t-rating reveal" style="--d: 0.1s">
+            <span class="score">4,9</span>
+            <div>
+              <div class="stars">★★★★★</div>
+              <div class="count">com base em avaliações do Google</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="t-carousel-wrap reveal" style="--d: 0.15s">
+          <div class="t-carousel" id="reviewCarousel">
+            <div class="t-track">
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">E</div>
+                  <div class="t-who">
+                    <div class="t-name">Eziel Alves</div>
+                    <div class="t-meta">2 avaliações · 1 foto</div>
+                  </div>
+                  <div class="t-time">2 anos atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Muito bom, Resolveu meu problema rápido, estou satisfeito,
+                  serviço de qualidade, super atencioso
+                </p>
+                <div class="t-reaction">🙏 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>MT obg, disponha!</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">M</div>
+                  <div class="t-who">
+                    <div class="t-name">Matheus Pinheiro</div>
+                    <div class="t-meta">
+                      Local Guide · 52 avaliações · 1 foto
+                    </div>
+                  </div>
+                  <div class="t-time">8 meses atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Trabalho de excelência e qualidade. Super recomendo!
+                </p>
+                <div class="t-reaction">🙏 1</div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">R</div>
+                  <div class="t-who">
+                    <div class="t-name">Régis Veterinário</div>
+                    <div class="t-meta">5 avaliações · 2 fotos</div>
+                  </div>
+                  <div class="t-time">um ano atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Excelente atendimento e de boa qualidade, recomendado!!
+                </p>
+                <div class="t-reaction">❤️ 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>Muito obrigado.</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">M</div>
+                  <div class="t-who">
+                    <div class="t-name">Marcos Vinicius S. Barreto</div>
+                    <div class="t-meta">2 avaliações</div>
+                  </div>
+                  <div class="t-time">um ano atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Excelente serviço prestado com qualidade, demonstrando grande
+                  conhecimento na área.
+                </p>
+                <div class="t-reaction">🙏 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>Muito obrigado!</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">U</div>
+                  <div class="t-who">
+                    <div class="t-name">Ubiraci Dos Anjos</div>
+                    <div class="t-meta">1 avaliação</div>
+                  </div>
+                  <div class="t-time">um ano atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">Muito bem, atendido recomendo</p>
+                <div class="t-reaction">❤️ 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>MT obg 🔥</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">W</div>
+                  <div class="t-who">
+                    <div class="t-name">Wilton Eliodorio</div>
+                    <div class="t-meta">1 avaliação</div>
+                  </div>
+                  <div class="t-time">um ano atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Excelente trabalho, rápido e de qualidade. Super recomendo!
+                  Melhor auto elétrica do sul de Minas Gerais!
+                </p>
+                <div class="t-reaction">❤️ 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>Muito obrigado!</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">L</div>
+                  <div class="t-who">
+                    <div class="t-name">Laura Paiva</div>
+                    <div class="t-meta">4 avaliações</div>
+                  </div>
+                  <div class="t-time">2 anos atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Excelente profissional, ótimo preço e muito cordial.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-track" aria-hidden="true">
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">E</div>
+                  <div class="t-who">
+                    <div class="t-name">Eziel Alves</div>
+                    <div class="t-meta">2 avaliações · 1 foto</div>
+                  </div>
+                  <div class="t-time">2 anos atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Muito bom, Resolveu meu problema rápido, estou satisfeito,
+                  serviço de qualidade, super atencioso
+                </p>
+                <div class="t-reaction">🙏 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>MT obg, disponha!</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">M</div>
+                  <div class="t-who">
+                    <div class="t-name">Matheus Pinheiro</div>
+                    <div class="t-meta">
+                      Local Guide · 52 avaliações · 1 foto
+                    </div>
+                  </div>
+                  <div class="t-time">8 meses atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Trabalho de excelência e qualidade. Super recomendo!
+                </p>
+                <div class="t-reaction">🙏 1</div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">R</div>
+                  <div class="t-who">
+                    <div class="t-name">Régis Veterinário</div>
+                    <div class="t-meta">5 avaliações · 2 fotos</div>
+                  </div>
+                  <div class="t-time">um ano atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Excelente atendimento e de boa qualidade, recomendado!!
+                </p>
+                <div class="t-reaction">❤️ 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>Muito obrigado.</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">M</div>
+                  <div class="t-who">
+                    <div class="t-name">Marcos Vinicius S. Barreto</div>
+                    <div class="t-meta">2 avaliações</div>
+                  </div>
+                  <div class="t-time">um ano atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Excelente serviço prestado com qualidade, demonstrando grande
+                  conhecimento na área.
+                </p>
+                <div class="t-reaction">🙏 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>Muito obrigado!</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">U</div>
+                  <div class="t-who">
+                    <div class="t-name">Ubiraci Dos Anjos</div>
+                    <div class="t-meta">1 avaliação</div>
+                  </div>
+                  <div class="t-time">um ano atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">Muito bem, atendido recomendo</p>
+                <div class="t-reaction">❤️ 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>MT obg 🔥</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">W</div>
+                  <div class="t-who">
+                    <div class="t-name">Wilton Eliodorio</div>
+                    <div class="t-meta">1 avaliação</div>
+                  </div>
+                  <div class="t-time">um ano atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Excelente trabalho, rápido e de qualidade. Super recomendo!
+                  Melhor auto elétrica do sul de Minas Gerais!
+                </p>
+                <div class="t-reaction">❤️ 1</div>
+                <div class="t-reply">
+                  <div class="t-reply-head">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                    </svg>
+                    <span>Auto Elétrica do Kelvin</span>
+                  </div>
+                  <p>Muito obrigado!</p>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <div class="t-card-top">
+                  <div class="t-avatar">L</div>
+                  <div class="t-who">
+                    <div class="t-name">Laura Paiva</div>
+                    <div class="t-meta">4 avaliações</div>
+                  </div>
+                  <div class="t-time">2 anos atrás</div>
+                </div>
+                <div class="t-stars-row">★★★★★</div>
+                <p class="t-text">
+                  Excelente profissional, ótimo preço e muito cordial.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARCAS ============ -->
+    <section class="brands">
+      <div class="eyebrow">Marcas que trabalhamos</div>
+      <div class="marquee-viewport">
+        <div class="marquee">
+          <div class="marquee-track">
+            <span>MOURA</span><span>HELIAR</span><span>BOSCH</span
+            ><span>PIONEIRO</span><span>NGK</span>
+          </div>
+          <div class="marquee-track" aria-hidden="true">
+            <span>MOURA</span><span>HELIAR</span><span>BOSCH</span
+            ><span>PIONEIRO</span><span>NGK</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOCALIZAÇÃO ============ -->
+    <section class="location pad" id="local">
+      <div class="container">
+        <div class="eyebrow reveal">Como Chegar</div>
+        <h2 class="section-title reveal">Venha tomar um café com a gente</h2>
+        <p class="section-lead reveal">
+          Estamos localizados no coração de Alterosa, prontos para atender você.
+        </p>
+        <div class="loc-grid">
+          <div class="loc-info">
+            <div class="loc-item reveal">
+              <div class="ic">
+                <svg class="icon-line" viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <h5>Endereço</h5>
+                <p>Rua Seila Alves de Lima, 180 — Alterosa, MG</p>
+              </div>
+            </div>
+            <div class="loc-item reveal" style="--d: 0.08s">
+              <div class="ic">
+                <svg class="icon-line" viewBox="0 0 24 24">
+                  <path d="M13 2 L5 14 H11 L10 22 L19 9 H13 Z" />
+                </svg>
+              </div>
+              <div>
+                <h5>WhatsApp</h5>
+                <a href="https://wa.me/5535997084353" target="_blank"
+                  >(35) 99708-4353</a
+                >
+              </div>
+            </div>
+            <div class="loc-item reveal" style="--d: 0.16s">
+              <div class="ic">
+                <svg class="icon-line" viewBox="0 0 24 24">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 7 L12 13 L21 7" />
+                </svg>
+              </div>
+              <div>
+                <h5>E-mail</h5>
+                <a href="mailto:contato@autoeletricadokelvin.com.br"
+                  >contato@autoeletricadokelvin.com.br</a
+                >
+              </div>
+            </div>
+            <div class="loc-item reveal" style="--d: 0.24s">
+              <div class="ic">
+                <svg class="icon-line" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7 L12 12 L16 14" />
+                </svg>
+              </div>
+              <div>
+                <h5>Horário</h5>
+                <p>Seg–Sex: 08h às 18h · Sáb: 08h às 13h</p>
+              </div>
+            </div>
+          </div>
+          <div class="map-frame reveal" style="--d: 0.15s">
+            <iframe
+              src="https://www.google.com/maps?q=Rua+Seila+Alves+de+Lima,+180,+Alterosa,+MG&output=embed"
+              loading="lazy"
+              allowfullscreen
+              title="Mapa de localização"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#top" class="brand">
+              <img
+                src="assets/logo-completa.png"
+                alt="Auto Elétrica & Auto Peças do Kelvin"
+              />
+            </a>
+            <p>
+              Referência em auto elétrica e distribuição de peças. Tradição,
+              tecnologia e confiança aplicadas em cada reparo.
+            </p>
+          </div>
+          <div>
+            <h5>Nossos Serviços</h5>
+            <ul>
+              <li>SOS Bateria Delivery</li>
+              <li>Diagnóstico de Injeção</li>
+              <li>Manutenção de Alternadores</li>
+              <li>Venda de Peças Originais</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Fale Conosco</h5>
+            <ul>
+              <li>📍 Rua Seila Alves de Lima, 180 — Alterosa MG</li>
+              <li>
+                📞
+                <a href="https://wa.me/5535997084353" target="_blank"
+                  >(35) 99708-4353</a
+                >
+                (WhatsApp)
+              </li>
+              <li>✉️ contato@autoeletricadokelvin.com.br</li>
+              <li>🕒 Seg–Sex: 08h às 18h · Sáb: 08h às 13h</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span
+            >© 2026 Auto Elétrica e Auto Peças do Kelvin. Todos os direitos
+            reservados.</span
+          >
+          <span>Desenvolvido por Alves Soluções.com</span>
+        </div>
+      </div>
+    </footer>
+
+    <a
+      href="https://wa.me/5535997084353"
+      target="_blank"
+      class="wa-float"
+      aria-label="Falar no WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path
+          d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"
+        />
+      </svg>
+    </a>
+
+    <script>
+      // Preloader
+      window.addEventListener("load", () => {
+        const pl = document.getElementById("preloader");
+        setTimeout(() => {
+          pl.classList.add("hidden");
+          document.body.classList.remove("locked");
+        }, 500);
+      });
+      // Fallback in case load event is delayed
+      setTimeout(() => {
+        document.getElementById("preloader").classList.add("hidden");
+        document.body.classList.remove("locked");
+      }, 2500);
+
+      // Header scroll state + scroll progress
+      const header = document.getElementById("siteHeader");
+      const progress = document.getElementById("scrollProgress");
+      const heroBgParallax = document.getElementById("heroBgParallax");
+      window.addEventListener("scroll", () => {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+        const h = document.documentElement;
+        const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+        progress.style.width = pct + "%";
+        if (heroBgParallax && window.scrollY < window.innerHeight) {
+          heroBgParallax.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+        }
+      });
+
+      // Mobile menu
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+        menuToggle.classList.toggle("open");
+      });
+      navLinks.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          menuToggle.classList.remove("open");
+        }),
+      );
+
+      // Active nav link on scroll
+      const navA = document.querySelectorAll("[data-nav]");
+      const sections = ["sobre", "produtos", "servicos", "local"].map((id) =>
+        document.getElementById(id),
+      );
+      const navIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const link = document.querySelector(
+              '[data-nav][href="#' + entry.target.id + '"]',
+            );
+            if (entry.isIntersecting) {
+              navA.forEach((a) => a.classList.remove("active"));
+              if (link) link.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-45% 0px -50% 0px" },
+      );
+      sections.forEach((s) => s && navIO.observe(s));
+
+      // Scroll reveal
+      const revealEls = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+      revealEls.forEach((el) => io.observe(el));
+
+      // Animated stat counters
+      const counters = document.querySelectorAll(".stat-num");
+      const counterIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              const target = parseInt(el.dataset.count, 10);
+              let current = 0;
+              const step = Math.max(1, Math.round(target / 40));
+              const tick = () => {
+                current += step;
+                if (current >= target) {
+                  el.textContent = target;
+                  return;
+                }
+                el.textContent = current;
+                requestAnimationFrame(tick);
+              };
+              tick();
+              counterIO.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      counters.forEach((el) => counterIO.observe(el));
+
+      // Ambient floating particles in hero
+      const particlesWrap = document.getElementById("particles");
+      const particleCount = window.innerWidth < 760 ? 10 : 22;
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        const size = 2 + Math.random() * 3;
+        p.style.width = size + "px";
+        p.style.height = size + "px";
+        p.style.left = Math.random() * 100 + "%";
+        p.style.bottom = Math.random() * 20 - 10 + "%";
+        p.style.animationDuration = 8 + Math.random() * 10 + "s";
+        p.style.animationDelay = Math.random() * 10 + "s";
+        particlesWrap.appendChild(p);
+      }
+
+      // Parallax on hero mousemove (desktop only)
+      const heroSection = document.querySelector(".hero");
+      const heroBgMark = document.getElementById("heroBgMark");
+      if (window.matchMedia("(pointer:fine)").matches) {
+        heroSection.addEventListener("mousemove", (e) => {
+          const x = e.clientX / window.innerWidth - 0.5;
+          const y = e.clientY / window.innerHeight - 0.5;
+          heroBgMark.style.transform = `translateY(-50%) translate(${x * -24}px, ${y * -24}px)`;
+        });
+      }
+
+      // Subtle 3D tilt on cards / infra tiles (desktop only)
+      if (window.matchMedia("(pointer:fine)").matches) {
+        document.querySelectorAll(".card, .infra-tile").forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const r = card.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `perspective(700px) rotateX(${py * -6}deg) rotateY(${px * 6}deg) translateY(-6px)`;
+          });
+          card.addEventListener("mouseleave", () => {
+            card.style.transform = "";
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
