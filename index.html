@@ -297,6 +297,31 @@
   .keys-card:hover .keys-icon{transform:rotate(-10deg) scale(1.1);box-shadow:0 0 24px rgba(212,175,55,.28);}
   .keys-card h4{font-size:1.02rem;text-transform:uppercase;margin-bottom:.5rem;letter-spacing:.01em;}
   .keys-card p{color:var(--muted);font-size:.9rem;}
+  .keys-proof{
+    display:flex;flex-direction:column;align-items:flex-end;gap:1rem;
+    margin-bottom:2.2rem;max-width:380px;width:100%;
+  }
+  .keys-proof .photo-frame{
+    position:relative;width:100%;aspect-ratio:16/10;
+    border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--line-strong);
+    box-shadow:0 20px 45px rgba(0,0,0,.45);
+  }
+  .keys-proof img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transition:transform .7s ease;
+  }
+  .keys-proof .photo-frame:hover img{transform:scale(1.07);}
+  .keys-proof span{
+    font-family:var(--font-display);font-weight:600;font-size:.88rem;
+    color:var(--muted);text-align:right;letter-spacing:.01em;max-width:340px;
+  }
+  .reveal-pop{
+    opacity:0;transform:translateY(26px) scale(.88);
+    transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+    transition-delay:var(--d,0s);
+  }
+  .reveal-pop.in{opacity:1;transform:translateY(0) scale(1);}
 
   /* ===== FEATURE BAR ===== */
   .feature-bar{
@@ -322,13 +347,20 @@
   /* ===== SOBRE (About) ===== */
   .about{background:var(--bg);}
   .about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:4rem;align-items:center;}
-  .about-media{position:relative;}
+  .about-media{position:relative;max-width:440px;}
   .about-media .frame{
     position:relative;border-radius:var(--radius);overflow:hidden;
-    border:1px solid var(--line-strong);
+    border:1px solid var(--line-strong);aspect-ratio:4/5;
   }
-  .about-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02) contrast(1.03);transition:transform .7s ease;}
+  .about-media .frame img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    filter:saturate(1.02) contrast(1.03);transition:transform .7s ease;
+  }
   .about-media .frame:hover img{transform:scale(1.05);}
+  @keyframes crossfadeA{0%,40%{opacity:1;}50%,90%{opacity:0;}100%{opacity:1;}}
+  @keyframes crossfadeB{0%,40%{opacity:0;}50%,90%{opacity:1;}100%{opacity:0;}}
+  .about-media .frame img.slide-a{animation:crossfadeA 10s ease-in-out infinite;}
+  .about-media .frame img.slide-b{animation:crossfadeB 10s ease-in-out infinite;}
   .about-media .frame-tag{
     position:absolute;top:1.2rem;left:1.2rem;
     background:rgba(10,10,11,.75);backdrop-filter:blur(6px);
@@ -624,6 +656,7 @@
     .hero-stats{gap:1.8rem;}
     .keys{padding:6rem 0;}
     .keys-grid{max-width:100%;}
+    .keys-proof{max-width:100%;}
     .keys-grid-cards{gap:1.1rem;}
     .card-grid{grid-template-columns:1fr;}
     .infra-grid{grid-template-columns:1fr 1fr;}
@@ -641,6 +674,8 @@
     .btn-primary,
     .pulse-dot,
     .about-media .badge-years,
+    .about-media .frame img.slide-a,
+    .about-media .frame img.slide-b,
     .sos::after,
     .marquee,
     .t-carousel,
@@ -648,6 +683,8 @@
     .wa-float::before{
       animation:none !important;
     }
+    .about-media .frame img.slide-a{opacity:1;}
+    .about-media .frame img.slide-b{opacity:0;}
     .marquee-track[aria-hidden="true"],
     .t-track[aria-hidden="true"]{display:none;}
     .t-carousel-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;}
@@ -783,6 +820,12 @@
           <p>Identificamos a causa da falha antes de qualquer serviço, com orçamento transparente.</p>
         </div>
       </div>
+      <div class="keys-proof reveal-pop" style="--d:.25s">
+        <div class="photo-frame">
+          <img src="assets/claves.jpeg" alt="Chaves automotivas codificadas pela Auto Elétrica do Kelvin">
+        </div>
+        <span>Modelos de chaves que já copiamos e codificamos no dia a dia da oficina</span>
+      </div>
       <a href="https://wa.me/5535997084353" target="_blank" class="btn btn-primary reveal" style="--d:.3s">Solicitar Avaliação</a>
     </div>
   </div>
@@ -828,7 +871,8 @@
   <div class="container about-grid">
     <div class="about-media reveal">
       <div class="frame">
-        <img src="assets/donos.png" alt="Kelvin e equipe, donos da Auto Elétrica do Kelvin, em frente ao logo da oficina">
+        <img class="slide-a" src="assets/alternadores1.jpeg" alt="Estoque de alternadores originais na oficina Auto Elétrica do Kelvin">
+        <img class="slide-b" src="assets/alternadores2.jpeg" alt="Estoque de motores de arranque na oficina Auto Elétrica do Kelvin">
         <div class="frame-tag">Alterosa — MG</div>
       </div>
       <div class="badge-years"><span class="n">6+</span><span class="l">Anos de<br>Trajetória</span></div>
@@ -836,7 +880,7 @@
     <div class="about-copy reveal" style="--d:.15s">
       <div class="eyebrow">Nossa Trajetória</div>
       <h2 class="section-title">Uma paixão que virou referência</h2>
-      <p>O Kelvin cresceu desde pequeno dentro de uma oficina e, ali, desenvolveu uma verdadeira paixão pelo que faz. Há mais de 6 anos, essa paixão deu origem à <strong>Auto Elétrica e Auto Peças do Kelvin</strong>, com um propósito claro: elevar o nível da elétrica automotiva em Alterosa e região.</p>
+      <p>Kelvin cresceu desde pequeno dentro de uma oficina e, ali, desenvolveu uma verdadeira paixão pelo que faz. Há mais de 6 anos, essa paixão deu origem à <strong>Auto Elétrica e Auto Peças do Kelvin</strong>, com um propósito claro: elevar o nível da elétrica automotiva em Alterosa e região.</p>
       <p>Nossa missão sempre foi além de apenas trocar peças. Buscamos entender o problema do seu veículo de forma profunda para oferecer uma solução definitiva e transparente — hoje, contamos com uma base sólida de clientes que confiam suas famílias e suas frotas de trabalho em nossas mãos.</p>
       <ul class="signature-list">
         <li>
@@ -885,7 +929,7 @@
           </svg>
         </div>
         <h4>Baterias Premium</h4>
-        <p>Linha completa para veículos leves, pesados e sistemas start-stop. Trabalhamos com a marca Kondor.</p>
+        <p>Linha completa para veículos leves e pesados. Trabalhamos com a marca Kondor.</p>
       </div>
       <div class="card reveal" style="--d:.1s">
         <div class="card-icon">
@@ -982,7 +1026,7 @@
     <p class="section-lead reveal">Um espaço limpo e equipado com tecnologia de ponta para cuidar do seu veículo do início ao fim.</p>
     <div class="infra-grid">
       <div class="infra-tile reveal">
-        <img class="tile-photo" src="assets/card-1.png" alt="Oficina interna da Auto Elétrica do Kelvin" onerror="this.style.display='none'">
+        <img class="tile-photo" src="assets/alternadores2.jpeg" alt="Estoque de motores de arranque na oficina Auto Elétrica do Kelvin" onerror="this.style.display='none'">
         <div class="tile-shade"></div>
         <div class="icon-wrap">
           <svg class="icon-line" viewBox="0 0 24 24" style="width:55%;height:55%;">
@@ -1332,8 +1376,8 @@
 
 <!-- ============ MARCAS ============ -->
 <section class="brands">
-  <div class="eyebrow">Marcas que trabalhamos</div>
-  <div class="marquee-viewport">
+  <div class="eyebrow reveal">Marcas que trabalhamos</div>
+  <div class="marquee-viewport reveal" style="--d:.1s">
     <div class="marquee">
       <div class="marquee-track">
         <span>KONDOR</span><span>BOSCH</span><span>NGK</span>
@@ -1380,7 +1424,7 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-grid reveal">
       <div class="footer-brand">
         <a href="#top" class="brand">
           <img src="assets/logo-completa.png" alt="Auto Elétrica & Auto Peças do Kelvin">
@@ -1407,7 +1451,7 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="footer-bottom reveal" style="--d:.1s">
       <span>© 2026 Auto Elétrica e Auto Peças do Kelvin. Todos os direitos reservados.</span>
       <span>Desenvolvido por DevAllves.com</span>
     </div>
@@ -1467,7 +1511,7 @@
   sections.forEach(s => s && navIO.observe(s));
 
   // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
+  const revealEls = document.querySelectorAll('.reveal, .reveal-pop');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
