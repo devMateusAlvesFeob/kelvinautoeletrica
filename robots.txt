@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# PENDENTE: o site ainda não tem domínio definido.
+# Quando tiver, troque SEU-DOMINIO pelo endereço real e remova o "#" da linha abaixo.
+# Sitemap: https://SEU-DOMINIO/sitemap.xml
